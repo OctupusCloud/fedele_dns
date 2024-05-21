@@ -7,8 +7,8 @@ homepage = "https://github.com/peteeckel/netbox-plugin-dns"
 repository = "https://github.com/peteeckel/netbox-plugin-dns"
 license = "MIT"
 readme = "README.md"
-packages = [{include = "netbox_dns"}]
-exclude = ["netbox_dns/tests/*"]
+packages = [{include = "fedele_dns"}]
+exclude = ["fedele_dns/tests/*"]
 keywords = ["netbox", "netbox-plugin", "dns"]
 
 [tool.poetry.dependencies]

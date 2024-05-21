@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from netbox_dns.models import View, Zone, Record
+from fedele_dns.models import View, Zone, Record
 
 from extras.scripts import Script, StringVar, BooleanVar
 from jinja2 import Environment, DictLoader

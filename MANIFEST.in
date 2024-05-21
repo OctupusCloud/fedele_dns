@@ -1,0 +1,12 @@
+recursive-include fedele_dns/templates *
+recursive-include fedele_dns/api *
+recursive-include fedele_dns/fields *
+recursive-include fedele_dns/filters *
+recursive-include fedele_dns/graphql *
+recursive-include fedele_dns/management *
+recursive-include fedele_dns/forms *
+recursive-include fedele_dns/tests *
+recursive-include fedele_dns/views *
+recursive-include fedele_dns/signals *
+recursive-include fedele_dns/tables *
+recursive-include fedele_dns/utilities *

@@ -42,7 +42,7 @@ Add the plugin to the NetBox config. `~/netbox/configuration.py`
 
 ```python
 PLUGINS = [
-    "netbox_dns",
+    "fedele_dns",
 ]
 ```
 
@@ -52,7 +52,7 @@ To permanently keep the plugin installed when updating NetBox via `update.sh`:
 echo netbox-plugin-dns >> ~/netbox/local_requirements.txt
 ```
 
-To add the required netbox_dns tables to your database run the following command from your NetBox directory:
+To add the required fedele_dns tables to your database run the following command from your NetBox directory:
 
 ```
 ./manage.py migrate

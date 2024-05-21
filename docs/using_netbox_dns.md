@@ -82,10 +82,10 @@ The following Django permissions are applicable to View objects:
 
 Permission               | Action
 ----------               | ------
-`netbox_dns.add_view`    | Create new view objects
-`netbox_dns.change_view` | Edit view information
-`netbox_dns.delete_view` | Delete a name server object
-`netbox_dns.view_view`   | View name server information
+`fedele_dns.add_view`    | Create new view objects
+`fedele_dns.change_view` | Edit view information
+`fedele_dns.delete_view` | Delete a name server object
+`fedele_dns.view_view`   | View name server information
 
 To use tags, the `extras.view_tag` permission is required as well.
 
@@ -115,10 +115,10 @@ The following Django permissions are applicable to Name Server objects:
 
 Permission                     | Action
 ----------                     | ------
-`netbox_dns.add_nameserver`    | Create new name server objects
-`netbox_dns.change_nameserver` | Edit name server information
-`netbox_dns.delete_nameserver` | Delete a name server object
-`netbox_dns.view_nameserver`   | View name server information
+`fedele_dns.add_nameserver`    | Create new name server objects
+`fedele_dns.change_nameserver` | Edit name server information
+`fedele_dns.delete_nameserver` | Delete a name server object
+`fedele_dns.view_nameserver`   | View name server information
 
 To use tags, the `extras.view_tag` permission is required as well.
 
@@ -154,10 +154,10 @@ The following Django permissions are applicable to Name Server objects:
 
 Permission               | Action
 ----------               | ------
-`netbox_dns.add_zone`    | Create new zone objects
-`netbox_dns.change_zone` | Edit zone information
-`netbox_dns.delete_zone` | Delete a zone object
-`netbox_dns.view_zone`   | View zone information
+`fedele_dns.add_zone`    | Create new zone objects
+`fedele_dns.change_zone` | Edit zone information
+`fedele_dns.delete_zone` | Delete a zone object
+`fedele_dns.view_zone`   | View zone information
 
 To use tags, the `extras.view_tag` permission is required as well.
 
@@ -267,7 +267,7 @@ The settings can be set or overridden in the file `/opt/netbox/netbox/netbox/con
 
 ```
 PLUGINS_CONFIG = {
-    'netbox_dns': {
+    'fedele_dns': {
         'zone_nameservers': ['ns1.example.com', 'ns2.example.com'],
         'zone_soa_mname': 'ns1.example.com',
         'zone_soa_rname': 'hostmaster.example.com',
@@ -291,10 +291,10 @@ The following Django permissions are applicable to NameServer objects:
 
 Permission                 | Action
 ----------                 | ------
-`netbox_dns.add_record`    | Create new record objects
-`netbox_dns.change_record` | Edit record information
-`netbox_dns.delete_record` | Delete a record object
-`netbox_dns.view_record`   | View record information
+`fedele_dns.add_record`    | Create new record objects
+`fedele_dns.change_record` | Edit record information
+`fedele_dns.delete_record` | Delete a record object
+`fedele_dns.view_record`   | View record information
 
 To use tags, the `extras.view_tag` permission is required as well.
 
@@ -352,10 +352,10 @@ The following Django permissions are applicable to Registrar objects:
 
 Permission                    | Action
 ----------                    | ------
-`netbox_dns.add_registrar`    | Create new registrar objects
-`netbox_dns.change_registrar` | Edit registrar information
-`netbox_dns.delete_registrar` | Delete a registrar object
-`netbox_dns.view_registrar`   | View registrar information
+`fedele_dns.add_registrar`    | Create new registrar objects
+`fedele_dns.change_registrar` | Edit registrar information
+`fedele_dns.delete_registrar` | Delete a registrar object
+`fedele_dns.view_registrar`   | View registrar information
 
 To use tags, the `extras.view_tag` permission is required as well.
 
@@ -389,10 +389,10 @@ The following Django permissions are applicable to Contact objects:
 
 Permission                  | Action
 ----------                  | ------
-`netbox_dns.add_contact`    | Create new contact objects
-`netbox_dns.change_contact` | Edit contact information
-`netbox_dns.delete_contact` | Delete a contact object
-`netbox_dns.view_contact`   | View contact information
+`fedele_dns.add_contact`    | Create new contact objects
+`fedele_dns.change_contact` | Edit contact information
+`fedele_dns.delete_contact` | Delete a contact object
+`fedele_dns.view_contact`   | View contact information
 
 To use tags, the `extras.view_tag` permission is required as well.
 
@@ -461,7 +461,7 @@ The settings can be set or overridden in the file `/opt/netbox/netbox/netbox/con
 
 ```
 PLUGINS_CONFIG = {
-    'netbox_dns': {
+    'fedele_dns': {
         ...
         'allow_underscores_in_hostnames': True,
         'tolerate_leading_underscore_types': ["TXT", "SRV", "CNAME"]
@@ -486,7 +486,7 @@ NetBox DNS provides experimental support for managing root zones. Root zones are
 
 ```
 PLUGINS_CONFIG = {
-    'netbox_dns': {
+    'fedele_dns': {
         ...
         'enable_root_zones': True,
         ...
@@ -504,7 +504,7 @@ For this reason there is a configuration setting that makes NetBox DNS enforce u
 
 ```
 PLUGINS_CONFIG = {
-    'netbox_dns': {
+    'fedele_dns': {
         ...
         'enforce_unique_records': True,
         ...
@@ -542,7 +542,7 @@ The new experimental feature needs to be enabled in the NetBox configuration fil
 
 ```
 PLUGINS_CONFIG = {
-    'netbox_dns': {
+    'fedele_dns': {
         ...
         'feature_ipam_coupling': True,
         ...
@@ -589,7 +589,7 @@ This mapping can be configured using the configuration variable `ipam_coupling_i
 
 ```
 PLUGINS_CONFIG = {
-    'netbox_dns': {
+    'fedele_dns': {
         ...
         'ipam_coupling_ip_address_status_list': [
             'active',

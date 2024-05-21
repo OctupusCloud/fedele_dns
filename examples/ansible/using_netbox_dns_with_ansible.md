@@ -66,7 +66,7 @@ Now the API connection can be tested by performing a simple lookup against NetBo
 % ansible -m debug \
           -a "msg={{ query('NetBox.NetBox.nb_lookup', \
                            'nameservers', \
-                           plugin='NetBox_dns', \
+                           plugin='fedele_dns', \
                            api_endpoint='https://192.168.106.105/', \
                            token='b02c088f58ccf5d24d7d46509809f4ef6958143c') }}" localhost
 ```
@@ -133,13 +133,13 @@ A minimalistic playbook to create a zone from that template and the NetBox DNS d
           src: zone.db.j2
           dest: "{{ zone.name }}.db"
       vars:
-          zone: "{{ query('NetBox.NetBox.nb_lookup', 'zones', plugin='NetBox_dns',
+          zone: "{{ query('NetBox.NetBox.nb_lookup', 'zones', plugin='fedele_dns',
                            api_endpoint='https://192.168.106.105/',
                            api_filter='name=example.com',
                            token='b02c088f58ccf5d24d7d46509809f4ef6958143c') 
                     | map(attribute='value') 
                     | first }}"
-          records: "{{ query('NetBox.NetBox.nb_lookup', 'records', plugin='NetBox_dns',
+          records: "{{ query('NetBox.NetBox.nb_lookup', 'records', plugin='fedele_dns',
                              api_endpoint='https://192.168.106.105/',
                              api_filter='zone='+zone.name,
                              token='b02c088f58ccf5d24d7d46509809f4ef6958143c') 

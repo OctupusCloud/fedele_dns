@@ -3,7 +3,7 @@
 import dns
 from dns import name as dns_name
 
-from netbox_dns.models import Record, View, RecordTypeChoices, Zone
+from fedele_dns.models import Record, View, RecordTypeChoices, Zone
 from ipam.models import IPAddress, VRF
 
 from extras.scripts import Script, ObjectVar, BooleanVar

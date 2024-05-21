@@ -21,7 +21,7 @@ Include the following information in your post:
 * When submitting a pull request, please be sure to work off of the `develop` branch, rather than `main`. The `develop` branch is used for ongoing development, while `main` is used for tagging stable releases.
 * All code submissions should meet the following criteria (CI will enforce these checks):
     * Python syntax is valid
-    * All tests pass when run with `python manage.py test netbox_dns.tests`
+    * All tests pass when run with `python manage.py test fedele_dns.tests`
     * `black` code formatting compliance is enforced
 
 ## First Time Setup
@@ -60,7 +60,7 @@ Add the plugin to the NetBox config. `~/netbox/configuration.py`
 
 ```python
 PLUGINS = [
-    "netbox_dns",
+    "fedele_dns",
 ]
 ```
 
@@ -71,11 +71,11 @@ PLUGINS = [
 Go to the NetBox directory and run
 
 ```
-$ python manage.py test netbox_dns.tests
+$ python manage.py test fedele_dns.tests
 ```
 
 ## Running `black` Code Formatting
 
 ```
-$ black netbox_dns
+$ black fedele_dns
 ```

@@ -15,7 +15,7 @@ DATABASE = {
 }
 
 PLUGINS = [
-    "netbox_dns",
+    "fedele_dns",
 ]
 
 REDIS = {
