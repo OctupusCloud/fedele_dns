@@ -1,73 +1,85 @@
-<h1 align="center">NetBox DNS</h1>
+# Fedele Tunnels Extension
+Esta extension es un fork de https://github.com/robertlynch3/netbox-tunnels2
 
-<p align="center"><i>NetBox DNS is a NetBox plugin for managing DNS views, zones, name servers and records.</i></p>
+## Creación del Fork
+Para futuras actualizaciones de la Extensión, si se desea realizar un nuevo fork, se debe realizar el siguiente procedimiento:
 
-<div align="center">
-<a href="https://pypi.org/project/netbox-plugin-dns/"><img src="https://img.shields.io/pypi/v/netbox-plugin-dns" alt="PyPi"/></a>
-<a href="https://github.com/peteeckel/netbox-plugin-dns/stargazers"><img src="https://img.shields.io/github/stars/peteeckel/netbox-plugin-dns" alt="Stars Badge"/></a>
-<a href="https://github.com/peteeckel/netbox-plugin-dns/network/members"><img src="https://img.shields.io/github/forks/peteeckel/netbox-plugin-dns" alt="Forks Badge"/></a>
-<a href="https://github.com/peteeckel/netbox-plugin-dns/pulls"><img src="https://img.shields.io/github/issues-pr/peteeckel/netbox-plugin-dns" alt="Pull Requests Badge"/></a>
-<a href="https://github.com/peteeckel/netbox-plugin-dns/issues"><img src="https://img.shields.io/github/issues/peteeckel/netbox-plugin-dns" alt="Issues Badge"/></a>
-<a href="https://github.com/peteeckel/netbox-plugin-dns/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/peteeckel/netbox-plugin-dns?color=2b9348"></a>
-<a href="https://github.com/peteeckel/netbox-plugin-dns/blob/master/LICENSE"><img src="https://img.shields.io/github/license/peteeckel/netbox-plugin-dns?color=2b9348" alt="License Badge"/></a>
-</div>
+1. Hacer el Fork
+2. Añadir remoto: 
+  
+  ```
+  git remote add upstream [GitHub repo original]
+  ```
 
-## Features
+3. Obtener tags: 
+  ```
+  git fetch upstream --tags
+  ```
 
-* Manage name servers, zones and records
-* Automatically generate SOA and NS records for zones
-* Automatically create and update PTR records for IPv4 and IPv6 records
-* Optionally organize DNS zones in views for split horizon DNS and multi-site deployments
-* Optionally maintain domain registrar and registrant information for zones
+4. Ir a rama main:
+  ```
+  git checkout main
+  ```
 
-NetBox DNS is using the standardized NetBox plugin interface, so it also takes advantage of the NetBox tagging and change log features.
+5. Reiniciar rama main con el tag a utilizar:
 
-## Requirements
+  ```
+  git reset --hard tags/nombre-del-tag  
+  ```
 
-* NetBox 3.5.0 or higher
-* Python 3.8 or higher
+6. Pushear cambios:
+  ```
+  git push --force origin main
+  ```
 
-## Installation & Configuration
+## Instalación
 
-### Installation
+1. Cambiar netbox_dns por fedele_dns en ```__init__.py``` y en ```setup.py```
 
+2. Cambiar nombre de carpeta de proyecto a ```fedele_dns```
+
+3. Cambiar nombre de carpeta ```/fedele_dns/templates/netbox_dns``` a ```/fedele_dns/templates/fedele_dns```
+
+4. Con ```Ctrl + Shift + H``` reemplazar ```netbox_dns``` por ```fedele_dns``` en TODOS lados. 
+    
+    * [IMPORTANTE] Activar Match Whole Word (Palabra exacta). Caso contrario se van a reemplazar variables no deseadas y no va a funcionar correctamente.
+
+5. Con ```Ctrl + Shift + H``` reemplazar ```netbox-dns``` por ```fedele-dns``` en TODOS lados.
+    * [IMPORTANTE] Probar si funciona SIN este paso, caso contrario, realizarlo.
+
+6. Activar entorno virtual: 
 ```
-$ source /opt/netbox/venv/bin/activate
-(venv) $ pip install netbox-plugin-dns
-```
-
-### NetBox Configuration
-
-Add the plugin to the NetBox config. `~/netbox/configuration.py`
-
-```python
-PLUGINS = [
-    "fedele_dns",
-]
-```
-
-To permanently keep the plugin installed when updating NetBox via `update.sh`:
-
-```
-echo netbox-plugin-dns >> ~/netbox/local_requirements.txt
-```
-
-To add the required fedele_dns tables to your database run the following command from your NetBox directory:
-
-```
-./manage.py migrate
+source /opt/o4n/O4N_FEDELE_SOURCE/venv/bin/activate
 ```
 
-Full documentation on using plugins with NetBox: [Using Plugins - NetBox Documentation](https://netbox.readthedocs.io/en/stable/plugins/)
+7. Instalar Extensión: 
+  ```
+  python setup.py develop
+  ```
 
-## Contribute
+8. En ```configuration.py``` de Fedele agregar:
+  ```
+  PLUGINS = ["fedele_dns"]
+  ```
 
-Contributions are always welcome! Please see: [contributing guide](CONTRIBUTING.md)
+9. Eliminar todas las migraciones de la carpeta ```migrations```
 
-## Documentation
+10. Detectar migraciones:
+  ```
+  python manage.py makemigrations
+  ```
 
-For further information, please refer to the full documentation: [Using NetBox DNS](docs/using_netbox_dns.md)
+11. Ejecutar migraciones:
+  ```
+  python manage.py migrate
+  ```
 
-## License
+Nota: En caso de que no se ejecuten las migraciones, ejecutar el siguiente comando para anularlas:
+```
+python manage.py migrate fedele_dns zero --fake
+```
 
-MIT
+Y luego volver a ejecutar:
+```
+python manage.py migrate fedele_dns
+```
